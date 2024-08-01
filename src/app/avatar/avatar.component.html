@@ -1,0 +1,51 @@
+<!-- A-SCENE -->
+<a-scene
+  id="aframescene"
+  background="color:#6EBAA7"
+  cursor="rayOrigin: mouse; fuseTimeout: 0;"
+  cursor__xrselect="rayOrigin: xrselect"
+  raycaster="objects: .raycastable"
+  xr-mode-ui="enabled: true"
+  renderer="colorManagement: true"
+  toneMapping="linear"
+  light="defaultLightsEnabled: false">
+
+  <a-camera position="0 1.6 1"
+            wasd-controls="enabled:false"
+            look-controls="enabled:false">
+  </a-camera>
+
+  <a-gltf-model
+    id="playerID"
+    name="playerName"
+    src="assets/avatar/avatar.glb"
+    position="0 0 0"
+    rotation="0 0 0"
+    scale="1 1 1"
+    animation-mixer="clip: Idle; loop: repeat; crossFadeDuration: 0.4"
+    sound="src:assets/avatar/audio_testing.wav"
+    lipsync
+  ></a-gltf-model>
+
+</a-scene>
+
+
+<div id="overlay">
+  <div class="overlay-content">
+    <div>
+      <input type="text" class="form-control" [(ngModel)]="avatarText"/>
+    </div>
+  </div>
+  <div class="overlay-content">
+    <button type="button" class="btn btn-primary" (click)="playGoogleAudio(avatarText)">TEST VOCE</button>
+  </div>
+  <div class="overlay-content">
+    <button type="button" class="btn btn-primary" (click)="askTextIA(avatarText)">ASK IA QUESTION</button>
+  </div>
+  <div class="overlay-content">
+    <button type="button" class="btn btn-primary" (click)="registerAndPlayAudio()">TALKING TEST</button>
+  </div>
+  <div class="overlay-content">
+    <span>{{ audioTranscription }}</span>
+  </div>
+</div>
